@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { CounterComponent } from './CounterComponent';
 import { Input } from './Input';
+import assetsImage from './Assets/img.jpeg';
 
 function App() {
   const handler = () => {
@@ -17,6 +18,12 @@ function App() {
       <button onClick={handler}>PUSH ME</button>
 
       <Input />
+
+      <img src={assetsImage} alt="img" />
+
+      <img src={'/img.jpeg'} alt="img" />
+
+      <div className="example">HELLO WORLD</div>
     </div>
   );
 }
