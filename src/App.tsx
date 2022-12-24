@@ -21,7 +21,7 @@ function App() {
 
       <img src={assetsImage} alt="img" />
 
-      <img src={'/img.jpeg'} alt="img" />
+      <img src={'/images/img.jpeg'} alt="img" />
 
       <div className="example">HELLO WORLD</div>
     </div>
