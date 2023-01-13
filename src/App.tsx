@@ -1,8 +1,8 @@
 import React from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { CounterComponent } from './CounterComponent';
 import { Input } from './Input';
-import assetsImage from './Assets/img.jpeg';
 
 function App() {
   const handler = () => {
@@ -10,21 +10,40 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <CounterComponent title={'Orange'} />
-      <CounterComponent title={'Apple'} count={4} />
-      <CounterComponent title={'Lemon'} />
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <div className="App">
+            <CounterComponent title={'Orange'} />
+            <CounterComponent title={'Apple'} count={4} />
+            <CounterComponent title={'Lemon'} />
 
-      <button onClick={handler}>PUSH ME</button>
+            <button onClick={handler}>PUSH ME</button>
 
-      <Input />
+            <Input />
+            <Link to={'/main'}>main</Link>
 
-      <img src={assetsImage} alt="img" />
+            {/* <img src={assetsImage} alt="img" />
 
       <img src={'/images/img.jpeg'} alt="img" />
 
-      <div className="example">HELLO WORLD</div>
-    </div>
+      <div className="example">HELLO WORLD</div> */}
+          </div>
+        }
+      />
+
+      <Route
+        path="/main"
+        element={
+          <div className="App">
+            <img src={'/images/img.jpeg'} alt="img" />
+            <Link to={'/'}>root</Link>
+            <div className="example">HELLO WORLD</div>
+          </div>
+        }
+      />
+    </Routes>
   );
 }
 

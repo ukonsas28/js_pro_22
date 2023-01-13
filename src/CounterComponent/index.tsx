@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './counter.css';
+import style from './counter.module.scss';
 
 type CounterPropsType = {
   title: string;
@@ -20,9 +20,9 @@ export const CounterComponent = (props: CounterPropsType) => {
   };
 
   return (
-    <div className="counter_wrapper">
+    <div className={style.counter_wrapper}>
       <h1>{title}</h1>
-      <div className="counter_group">
+      <div className={style.counter_group}>
         <button disabled={count === 0} onClick={decrementHandler}>
           remove
         </button>
