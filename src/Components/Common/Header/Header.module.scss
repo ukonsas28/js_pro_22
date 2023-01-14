@@ -14,4 +14,9 @@
   &_title {
     color: chocolate;
   }
+
+  & > ul {
+    display: flex;
+    gap: 18px;
+  }
 }
