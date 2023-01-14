@@ -1,0 +1,12 @@
+.wrapper {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(97, 129, 118, 0.561);
+
+  .text {
+    font-size: 25px;
+    color: #212121;
+  }
+}
