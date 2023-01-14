@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import style from './PostsList.module.scss';
 
 export const PostsList = () => {
@@ -11,7 +12,7 @@ export const PostsList = () => {
       <p>POST4</p>
       <p>POST5</p>
       <p>POST6</p>
-      <p>POST7</p>
+      <Link to="/">go to main</Link>
     </main>
   );
 };
