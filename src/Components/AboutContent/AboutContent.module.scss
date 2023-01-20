@@ -1,0 +1,17 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  .about_block {
+    display: flex;
+    flex-direction: column;
+
+    &_item {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

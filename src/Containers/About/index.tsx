@@ -1,11 +1,11 @@
+import { AboutContent } from 'Components/AboutContent';
 import { PageWrapper } from 'Components/Common/PageWrapper';
-import { PostsList } from 'Components/PostsList';
 import React from 'react';
 
-export const Posts = () => {
+export const About = () => {
   return (
     <PageWrapper>
-      <PostsList />
+      <AboutContent />
     </PageWrapper>
   );
 };
