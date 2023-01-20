@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import style from './CounterComponent.module.scss';
 
 type CounterPropsType = {
   title: string;
-  count?: number;
 };
 
-export const CounterComponent = (props: CounterPropsType) => {
+const Counter = (props: CounterPropsType) => {
   const { title } = props;
 
   const [count, setCount] = useState(0);
@@ -27,8 +27,18 @@ export const CounterComponent = (props: CounterPropsType) => {
           remove
         </button>
         <h2>{count}</h2>
-        <button onClick={incrementHandler}>add</button>
+        <button disabled={count === 10} onClick={incrementHandler}>
+          add
+        </button>
       </div>
     </div>
   );
 };
+
+export const CounterComponent = React.memo(Counter, (prev, next) => {
+  if (prev.title === 'Apple111') {
+    return true;
+  } else {
+    return false;
+  }
+});
