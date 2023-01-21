@@ -1,8 +1,16 @@
 import { PageWrapper } from 'Components/Common/PageWrapper';
 import { MainContent } from 'Components/MainContent';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export const Main = () => {
+  console.log('Main');
+
+  useEffect(() => {
+    console.log('Main MOUNT');
+
+    return () => console.log('Main UNMOUNT');
+  }, []);
+
   return (
     <PageWrapper>
       <MainContent />

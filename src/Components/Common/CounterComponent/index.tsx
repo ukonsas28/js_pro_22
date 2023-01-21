@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './CounterComponent.module.scss';
 
 type CounterPropsType = {
@@ -6,10 +6,15 @@ type CounterPropsType = {
   count?: number;
 };
 
-export const CounterComponent = (props: CounterPropsType) => {
+const Counter = (props: CounterPropsType) => {
   const { title } = props;
-
   const [count, setCount] = useState(0);
+
+  console.log('CounterComponent');
+
+  useEffect(() => {
+    console.log('CounterComponent MOUNT');
+  }, []);
 
   const incrementHandler = () => {
     setCount((prev) => prev + 1);
@@ -32,3 +37,5 @@ export const CounterComponent = (props: CounterPropsType) => {
     </div>
   );
 };
+
+export const CounterComponent = React.memo(Counter, (prev, next) => prev.title === next.title);

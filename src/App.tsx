@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Main } from 'Containers/Main';
 import { Posts } from 'Containers/Posts';
 import { Routes, Route } from 'react-router-dom';
@@ -7,6 +7,12 @@ import { NotFound } from 'Containers/NotFound';
 import { About } from 'Containers/About';
 
 function App() {
+  console.log('App');
+
+  useEffect(() => {
+    console.log('App MOUNT');
+  }, []);
+
   return (
     <Routes>
       <Route path={routes.main} element={<Main />} />
