@@ -5,10 +5,9 @@ import { Routes, Route } from 'react-router-dom';
 import { routes } from 'Helpers/Constants/routes';
 import { NotFound } from 'Containers/NotFound';
 import { About } from 'Containers/About';
+import { Auth } from 'Containers/Auth';
 
 function App() {
-  console.log('App');
-
   useEffect(() => {
     console.log('App MOUNT');
   }, []);
@@ -18,6 +17,7 @@ function App() {
       <Route path={routes.main} element={<Main />} />
       <Route path={routes.posts} element={<Posts />} />
       <Route path={routes.about} element={<About />} />
+      <Route path={routes.auth} element={<Auth />} />
       <Route path={routes.notFound} element={<NotFound />} />
     </Routes>
   );

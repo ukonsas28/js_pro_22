@@ -16,12 +16,12 @@ export const Header = () => {
             <Link to={routes.posts}>ПОСТЫ</Link>
           </li>
           <li>
-            <Link to={'/about'}>О НАС</Link>
+            <Link to={routes.about}>О НАС</Link>
           </li>
         </ul>
       </nav>
 
-      <span className={style.wrapper_title}>REACT_LEARN</span>
+      <Link to={routes.auth}>AUTH</Link>
     </header>
   );
 };

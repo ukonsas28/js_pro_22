@@ -6,6 +6,11 @@
   justify-content: space-between;
   background-color: rgba(0, 16, 85, 0.922);
 
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
   &_logo {
     color: red;
     font-size: 20px;
@@ -21,10 +26,6 @@
       list-style: none;
       display: flex;
       gap: 18px;
-      & > li > a {
-        color: #fff;
-        text-decoration: none;
-      }
     }
   }
 }
