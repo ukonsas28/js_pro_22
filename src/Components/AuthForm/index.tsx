@@ -1,10 +1,14 @@
 import { Input } from 'Components/Common/Input';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import style from './AuthForm.module.scss';
+import { UserActions } from 'Store';
+import { useDispatch } from 'react-redux';
 
 export const AuthForm = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [errorMessage, setErrorMessage] = useState('');
+
+  const dispatch = useDispatch();
 
   const changeHandler =
     (fieldName: 'email' | 'password') => (event: ChangeEvent<HTMLInputElement>) => {
@@ -15,11 +19,13 @@ export const AuthForm = () => {
       });
     };
 
-  const submmitHandler = () => {
+  const submitHandler = () => {
     if (formState.password.length < 5) {
       setErrorMessage('пароль слишком короткий');
     } else {
       setErrorMessage('');
+      dispatch(UserActions.setLoading(true));
+      setTimeout(() => dispatch(UserActions.setUserData({ email: 'Alex', token: '122' })), 2000);
       console.log(formState, 'отправленно на сервер');
     }
   };
@@ -47,7 +53,7 @@ export const AuthForm = () => {
 
       {errorMessage !== '' && <div className={style.error}>{errorMessage}</div>}
 
-      <button type="button" onClick={submmitHandler}>
+      <button type="button" onClick={submitHandler}>
         AUTH
       </button>
     </div>
