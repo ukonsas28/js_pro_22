@@ -20,6 +20,10 @@ const userSlice = createSlice({
     setUserLoading(state, { payload }: PayloadAction<boolean>) {
       return { ...state, loading: payload };
     },
+
+    clearUserData() {
+      return { ...initialState };
+    },
   },
 });
 
