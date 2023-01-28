@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { PageWrapper } from 'Components/Common/PageWrapper';
 import { AuthForm } from 'Components/AuthForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { UserSelectors, UserSliceActions } from 'Store';
@@ -23,5 +22,5 @@ export const Auth = () => {
     }
   }, [token]);
 
-  return <PageWrapper>{loading ? <h1>Loading...</h1> : <AuthForm />}</PageWrapper>;
+  return loading ? <h1>Loading...</h1> : <AuthForm />;
 };
