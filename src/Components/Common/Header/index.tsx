@@ -1,9 +1,13 @@
 import { routes } from 'Helpers/Constants/routes';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { UserSelectors } from 'Store';
 import style from './Header.module.scss';
 
 export const Header = () => {
+  const userEmail = useSelector(UserSelectors.getUserEmail);
+
   return (
     <header className={style.wrapper}>
       <img className={style.wrapper_logo} src="/logo.png" />
@@ -21,7 +25,11 @@ export const Header = () => {
         </ul>
       </nav>
 
-      <Link to={routes.auth}>AUTH</Link>
+      {userEmail ? (
+        <span className={style.name}>{userEmail}</span>
+      ) : (
+        <Link to={routes.auth}>AUTH</Link>
+      )}
     </header>
   );
 };
