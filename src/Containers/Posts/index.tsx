@@ -1,24 +1,14 @@
-import { CheckAuth } from 'Components/Common/CheckAuth';
 import { PostsList } from 'Components/PostsList';
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { PostsSliceActions } from 'Store';
 
 export const Posts = () => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    const handler = () => console.log('click on post page');
-
-    document.addEventListener('click', handler);
-
-    console.log('Posts MOUNT');
-
-    return () => {
-      console.log('Posts UNMOUNT');
-      document.removeEventListener('click', handler);
-    };
+    dispatch(PostsSliceActions.fetchPosts());
   }, []);
 
-  return (
-    <CheckAuth>
-      <PostsList />
-    </CheckAuth>
-  );
+  return <PostsList />;
 };
