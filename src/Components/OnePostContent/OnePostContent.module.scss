@@ -1,0 +1,15 @@
+.wrapper {
+  h4,
+  p > {
+    margin: 0;
+  }
+
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  overflow: hidden;
+  gap: 20px;
+  border: 1px solid #212121;
+}

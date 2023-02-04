@@ -1,6 +1,6 @@
 import React from 'react';
 import { OnePostType } from 'Store/Posts/types';
-import { OnePost } from './OnePost';
+import { ListItem } from './ListItem';
 import style from './PostsList.module.scss';
 
 type PostListPropsType = {
@@ -13,7 +13,7 @@ export const PostsList = ({ postsData }: PostListPropsType) => {
       <h1>POSTS</h1>
       <div className={style.posts}>
         {postsData.map((el) => (
-          <OnePost key={el.id} title={el.title} body={el.body} />
+          <ListItem key={el.id} title={el.title} body={el.body} id={el.id} />
         ))}
       </div>
     </main>

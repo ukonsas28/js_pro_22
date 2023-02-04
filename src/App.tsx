@@ -7,6 +7,7 @@ import { NotFound } from 'Containers/NotFound';
 import { About } from 'Containers/About';
 import { Auth } from 'Containers/Auth';
 import { PageWrapper } from 'Components/Common/PageWrapper';
+import { OnePost } from 'Containers/OnePost';
 
 function App() {
   useEffect(() => {
@@ -18,6 +19,7 @@ function App() {
       <Route path={routes.main} element={<PageWrapper />}>
         <Route index element={<Main />} />
         <Route path={routes.posts} element={<Posts />} />
+        <Route path={routes.onePost} element={<OnePost />} />
         <Route path={routes.about} element={<About />} />
         <Route path={routes.auth} element={<Auth />} />
         <Route path={routes.notFound} element={<NotFound />} />
