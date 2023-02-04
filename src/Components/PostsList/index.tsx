@@ -1,17 +1,20 @@
 import React from 'react';
+import { OnePostType } from 'Store/Posts/types';
+import { OnePost } from './OnePost';
 import style from './PostsList.module.scss';
 
-export const PostsList = () => {
+type PostListPropsType = {
+  postsData: OnePostType[];
+};
+
+export const PostsList = ({ postsData }: PostListPropsType) => {
   return (
     <main className={style.wrapper}>
       <h1>POSTS</h1>
       <div className={style.posts}>
-        <p>POST1</p>
-        <p>POST2</p>
-        <p>POST3</p>
-        <p>POST4</p>
-        <p>POST5</p>
-        <p>POST6</p>
+        {postsData.map((el) => (
+          <OnePost key={el.id} title={el.title} body={el.body} />
+        ))}
       </div>
     </main>
   );

@@ -1,8 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchPosts } from './effects';
+import { OnePostType } from './types';
 
 const initialState = {
-  posts: [],
+  posts: [] as OnePostType[],
   loading: false,
   error: {},
 };
@@ -15,11 +16,11 @@ const postsSlice = createSlice({
     builder.addCase(fetchPosts.pending, (state) => {
       return { ...state, loading: true };
     });
-    builder.addCase(fetchPosts.fulfilled, (state, { payload }) => {
+    builder.addCase(fetchPosts.fulfilled, (state, { payload }: PayloadAction<OnePostType[]>) => {
       return { ...state, posts: payload, loading: false };
     });
     builder.addCase(fetchPosts.rejected, (state, { error }) => {
-      return { ...state, error };
+      return { ...state, error, loading: false };
     });
   },
 });
