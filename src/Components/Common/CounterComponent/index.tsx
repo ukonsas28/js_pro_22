@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import style from './CounterComponent.module.scss';
 
 type CounterPropsType = {
@@ -6,15 +6,22 @@ type CounterPropsType = {
   count?: number;
 };
 
+const calculateValue = () => {
+  console.log('calculate');
+
+  let result = 0;
+  for (let i = 0; i < 1000000000; i++) {
+    result += 1;
+  }
+
+  return result;
+};
+
 const Counter = (props: CounterPropsType) => {
   const { title } = props;
   const [count, setCount] = useState(0);
 
-  console.log('CounterComponent');
-
-  useEffect(() => {
-    console.log('CounterComponent MOUNT');
-  }, []);
+  const someHeavyValue = calculateValue();
 
   const incrementHandler = () => {
     setCount((prev) => prev + 1);
@@ -23,6 +30,8 @@ const Counter = (props: CounterPropsType) => {
   const decrementHandler = () => {
     setCount((prev) => prev - 1);
   };
+
+  console.log(someHeavyValue);
 
   return (
     <div className={style.counter_wrapper}>

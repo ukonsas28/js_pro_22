@@ -3,42 +3,57 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import style from './MainContent.module.scss';
 
-export const MainContent = () => {
+type MainContentPropsType = {
+  flag: boolean;
+  toggle: () => void;
+};
+export const MainContent = ({ flag, toggle }: MainContentPropsType) => {
   const navigate = useNavigate();
   const [label, setLabel] = useState('LABEL');
 
-  console.log('MainContent');
+  const handler = () => {
+    console.log('Main');
+  };
 
   useEffect(() => {
-    console.log('MainContent UPDATE');
-  }, [label]);
+    window.addEventListener('click', handler);
+
+    return () => window.removeEventListener('click', handler);
+  }, []);
 
   return (
     <main className={style.wrapper}>
       <h1>MAIN CONTENT</h1>
 
-      <p>{label}</p>
-
-      <button type="button" onClick={() => setLabel((prev) => prev + '_UP')}>
-        SET LABEL
+      <button type="button" onClick={toggle}>
+        TOGGLE CONTENT
       </button>
+      {flag && (
+        <>
+          <p>{label}</p>
 
-      <div className={style.content}>
-        <CounterComponent title={label} />
-        <CounterComponent title={'Orange'} />
-      </div>
+          <button type="button" onClick={() => setLabel((prev) => prev + '_UP')}>
+            SET LABEL
+          </button>
 
-      <div className={style.btn_group}>
-        <button type="button" onClick={() => navigate(-1)}>
-          go back
-        </button>
-        <button type="button" onClick={() => navigate(1)}>
-          go next
-        </button>
-        <button type="button" onClick={() => navigate('/abracadabra')}>
-          abracadabra
-        </button>
-      </div>
+          <div className={style.content}>
+            <CounterComponent title={label} />
+            <CounterComponent title={'Orange'} />
+          </div>
+
+          <div className={style.btn_group}>
+            <button type="button" onClick={() => navigate(-1)}>
+              go back
+            </button>
+            <button type="button" onClick={() => navigate(1)}>
+              go next
+            </button>
+            <button type="button" onClick={() => navigate('/abracadabra')}>
+              abracadabra
+            </button>
+          </div>
+        </>
+      )}
     </main>
   );
 };

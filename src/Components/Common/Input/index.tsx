@@ -3,12 +3,13 @@ import style from './Input.module.scss';
 
 type InputProps = {
   name: string;
-  value: string;
+  value?: string;
   changeHandler: (event: ChangeEvent<HTMLInputElement>) => void;
   type?: string;
 };
 
-export const Input = ({ changeHandler, value, name, type = 'text' }: InputProps) => {
+const Component = ({ changeHandler, value = '', name, type = 'text' }: InputProps) => {
+  console.log(name, 'input');
   return (
     <div className={style.wrapper}>
       <span>{name}</span>
@@ -16,3 +17,4 @@ export const Input = ({ changeHandler, value, name, type = 'text' }: InputProps)
     </div>
   );
 };
+export const Input = React.memo(Component);
