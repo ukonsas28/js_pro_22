@@ -1,5 +1,5 @@
 import { Input } from 'Components/Common/Input';
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { UserSliceActions } from 'Store';
 import style from './AuthForm.module.scss';
@@ -10,14 +10,14 @@ export const AuthForm = () => {
 
   const dispatch = useDispatch();
 
-  const changeHandler =
-    (fieldName: 'email' | 'password') => (event: ChangeEvent<HTMLInputElement>) => {
+  const changeHandler = (fieldName: 'email' | 'password') =>
+    useCallback((event: ChangeEvent<HTMLInputElement>) => {
       setFormState((prev) => {
         const newData = { ...prev };
         newData[fieldName] = event.target.value;
         return newData;
       });
-    };
+    }, []);
 
   const submmitHandler = () => {
     if (formState.password.length < 5) {

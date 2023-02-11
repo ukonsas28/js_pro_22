@@ -8,7 +8,9 @@ type InputProps = {
   type?: string;
 };
 
-export const Input = ({ changeHandler, value, name, type = 'text' }: InputProps) => {
+const Component = ({ changeHandler, value, name, type = 'text' }: InputProps) => {
+  console.log(name, 'render');
+
   return (
     <div className={style.wrapper}>
       <span>{name}</span>
@@ -16,3 +18,5 @@ export const Input = ({ changeHandler, value, name, type = 'text' }: InputProps)
     </div>
   );
 };
+
+export const Input = React.memo(Component);
