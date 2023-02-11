@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import style from './CounterComponent.module.scss';
 
 type CounterPropsType = {
@@ -6,16 +6,16 @@ type CounterPropsType = {
   count?: number;
 };
 
-const calculateValue = () => {
-  console.log('calculate');
-  let result = 0;
+// const calculateValue = () => {
+//   console.log('calculate');
+//   let result = 0;
 
-  for (let i = 0; i < 1000000000; i++) {
-    result += 1;
-  }
+//   for (let i = 0; i < 1000000000; i++) {
+//     result += 1;
+//   }
 
-  return result;
-};
+//   return result;
+// };
 
 const Counter = (props: CounterPropsType) => {
   const { title } = props;
@@ -29,9 +29,9 @@ const Counter = (props: CounterPropsType) => {
     setCount((prev) => prev - 1);
   };
 
-  const someHeavyValue = useMemo(() => calculateValue(), []);
+  // const someHeavyValue = useMemo(calculateValue, []);
 
-  console.log(someHeavyValue);
+  // console.log(someHeavyValue);
 
   return (
     <div className={style.counter_wrapper}>
